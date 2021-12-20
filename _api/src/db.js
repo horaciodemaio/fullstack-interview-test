@@ -30,12 +30,12 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const {Repositories, Branches, Commits} = sequelize.models;
+const {Pr, Branches, Commits} = sequelize.models;
 
 // Aca vendrian las relaciones entre tablas
 
-Repositories.hasMany(Branches); 
-Branches.belongsTo(Repositories);
+Pr.hasMany(Branches); 
+Branches.belongsTo(Pr);
 
 Branches.hasMany(Commits);
 Commits.belongsTo(Branches);
