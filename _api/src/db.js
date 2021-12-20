@@ -32,8 +32,13 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const {Repositories, Branches, Commits} = sequelize.models;
 
-// Aca vendrian las relaciones
+// Aca vendrian las relaciones entre tablas
 
+Repositories.hasMany(Branches); 
+Branches.belongsTo(Repositories);
+
+Branches.hasMany(Commits);
+Commits.belongsTo(Branches);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
